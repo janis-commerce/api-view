@@ -1,0 +1,35 @@
+{
+  "name": "@janiscommerce/api-view",
+  "version": "1.0.0",
+  "description": "A package for managing API Views from any origin",
+  "main": "index.js",
+  "scripts": {
+    "test": "export TEST_ENV=true; mocha --exit -R nyan --recursive tests/",
+    "watch-test": "export TEST_ENV=true; mocha --exit -R nyan -w --recursive",
+    "test-ci": "nyc --reporter=html --reporter=text mocha --recursive tests/",
+    "coverage": "nyc npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janis-commerce/api-view.git"
+  },
+  "author": "Janis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janis-commerce/api-view/issues"
+  },
+  "homepage": "https://github.com/janis-commerce/api-view#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "mocha": "^5.2.0",
+    "mock-require": "^3.0.3",
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2"
+  },
+  "dependencies": {
+    "@janiscommerce/logger": "^1.1.0",
+    "superstruct": "^0.6.1"
+  }
+}
