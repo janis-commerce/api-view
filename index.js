@@ -1,5 +1,7 @@
 'use strict';
 
-const { APIView } = require('./api-view');
+const { APIView, Dispatcher } = require('./lib');
 
-module.exports = APIView;
+module.exports = {
+	APIView, Dispatcher
+};
