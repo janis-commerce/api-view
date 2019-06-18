@@ -11,13 +11,34 @@ A package for managing API View from any origin.
 npm install @janiscommerce/api-view
 ```
 
-## API
-* **new APIView( object )**
-Construct an API
+## Dispatcher
+* **new Dispatcher( object )**
+Construct a Dispatcher with the request information
 
 * async **.dispatch()**
 This method dispatch the api instance.
-Returns an object with `code` and the `result`.
+Returns an object with `code` and the `body`.
+
+## API
+You should extend your apis from this module.
+
+* **pathParameters** (*getter*). Returns the path parameters of the request.
+
+* **headers** (*getter*). Returns the the headers of the request.
+
+* **cookies** (*getter*). Returns the the cookies of the request.
+
+* **setCode(code)**. Set a response httpCode. `code` must be a integer.
+
+* **setHeader(headerName, headerValue)**. Set an individual response header. `headerName` must be a string.
+
+* **setHeaders(headers)**. Set response headers. `headers` must be an object with "key-value" headers.
+
+* **setCookie(cookieName, cookieValue)**. Set an individual response cookie. `cookieName` must be a string.
+
+* **setCookies(cookies)**. Set response cookies. `cookies` must be an object with "key-value" cookies.
+
+* **setBody(body)**. Set the response body.
 
 ## Usage
 
@@ -26,13 +47,13 @@ Returns an object with `code` and the `result`.
 ```js
 const API = require('@janiscommerce/api-view');
 
-const myApiView = new APIView({
+const dispatcher = new Dispatcher({
 	entity: 'product',
 	action: 'browse',
 	method: 'data'
 });
 
-const result = await myApiView.dispatch();
+const result = await dispatcher.dispatch();
 
 console.log(result);
 /**
@@ -62,14 +83,14 @@ console.log(result);
 ```js
 const API = require('@janiscommerce/api-view');
 
-const myApiView = new APIView({
+const dispatcher = new Dispatcher({
 	entity: 'product',
 	action: 'edit',
 	method: 'data',
 	entity: 5928
 });
 
-const result = await myApiView.dispatch();
+const result = await dispatcher.dispatch();
 
 console.log(result);
 /**
