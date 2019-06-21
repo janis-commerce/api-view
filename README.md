@@ -22,7 +22,7 @@ Returns an object with `code` and the `body`.
 ## API
 You should extend your apis from this module.
 
-* **pathParameters** (*getter*). Returns the path parameters of the request.
+* **pathParameters** (*getter*). Returns the path parameters of the request. The `entity` and `entityId` if present.
 
 * **headers** (*getter*). Returns the the headers of the request.
 
@@ -45,7 +45,7 @@ You should extend your apis from this module.
 * How to process a `browse` request
 
 ```js
-const API = require('@janiscommerce/api-view');
+const { Dispatcher } = require('@janiscommerce/api-view');
 
 const dispatcher = new Dispatcher({
 	entity: 'product',
@@ -81,7 +81,7 @@ console.log(result);
 * How to process an `edit` request
 
 ```js
-const API = require('@janiscommerce/api-view');
+const { Dispatcher } = require('@janiscommerce/api-view');
 
 const dispatcher = new Dispatcher({
 	entity: 'product',
