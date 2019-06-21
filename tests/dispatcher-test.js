@@ -317,6 +317,7 @@ describe('Dispatcher', function() {
 		it('should return code 200 api requestData with getters', async function() {
 
 			extraProcess = api => {
+				assert.deepEqual(api.entity, 'valid-process');
 				assert.deepEqual(api.pathParameters, ['10']);
 				assert.deepEqual(api.data, { 'some-great-data': 123 });
 				assert.deepEqual(api.headers, { 'my-header': 'foo' });
