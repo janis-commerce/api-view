@@ -112,7 +112,7 @@ describe('Dispatcher', function() {
 		mockRequire(path.join(Fetcher.apiViewPath, entity, 'action', 'method'), classContent);
 	};
 
-	before(() => {
+	beforeEach(() => {
 		mock('invalid-api-class', NoClass);
 		mock('invalid-api-inheritance', NoApiInheritance);
 		mock('no-process', NoProcess);
@@ -126,7 +126,8 @@ describe('Dispatcher', function() {
 		mock('valid-process', ValidProcess);
 	});
 
-	after(() => {
+	afterEach(() => {
+		delete process.env.MS_PATH;
 		mockRequire.stopAll();
 	});
 
@@ -376,6 +377,17 @@ describe('Dispatcher', function() {
 			await test({
 				entity: 'valid-process'
 			}, 200, {}, { 'valid-cookie': 123 });
+		});
+
+		it('should found api when using a prefix with ENV MS_PATH', async function() {
+
+			process.env.MS_PATH = 'my-custom-prefix';
+
+			mock('valid-with-prefix-entity', ValidProcess);
+
+			await test({
+				entity: 'valid-with-prefix-entity'
+			}, 200);
 		});
 	});
 
